@@ -6,6 +6,7 @@ import Form from './Form'
 import FormInput from './FormInput'
 
 const SusbscribeForm = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const submitHandler = async (data: any) => {
     console.log(data);
   }

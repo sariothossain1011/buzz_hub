@@ -5,7 +5,7 @@ import React from 'react'
 
 import { IoSearchOutline } from "react-icons/io5";
 const SearchForm = () => {
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = (data:any) => {
     console.log(data)
   }

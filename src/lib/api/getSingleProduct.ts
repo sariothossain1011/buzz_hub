@@ -1,6 +1,6 @@
 
 import data from '../../../public/data/products.json'
-export default async function getSingleProduct(id: any) {
+export default async function getSingleProduct(id: number) {
     try {
         const product = data.find(product => product.id == id);
         if (!product) {

@@ -1,5 +1,4 @@
 "use client";
-
 import React, { ReactElement, ReactNode, useEffect } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
@@ -28,7 +27,7 @@ const Form = ({
   const methods = useForm<FormProps>(formConfig);
 
   const { handleSubmit, reset } = methods;
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmit = (data: any) => {
     submitHandler(data);
     reset();

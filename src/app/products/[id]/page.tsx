@@ -6,7 +6,7 @@ import Link from 'next/link';
 import React from 'react'
 
 interface SingleProductProps {
-  params: { id: string }
+  params: { id: number }
 }
 const SingleProductPage: React.FC<SingleProductProps> = async ({ params }) => {
   const { id } = params;
