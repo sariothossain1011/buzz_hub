@@ -1,0 +1,44 @@
+[
+    {
+        "mainTitle": "MAIN FEATURES",
+        "items": [
+            {
+                "title": "Laptop",
+                "path": "/"
+            },
+            {
+                "title": "Desktop",
+                "path": "/"
+            },
+            {
+                "title": "HeadPhone",
+                "path": "/"
+            },
+            {
+                "title": "Mobile",
+                "path": "/"
+            }
+        ]
+    },
+    {
+        "mainTitle": "CUSTOMER SERVICES",
+        "items": [
+            {
+                "title": "Abouts Us",
+                "path": "/about-us"
+            },
+            {
+                "title": "Terms & conditions",
+                "path": "/terms-and-condition"
+            },
+            {
+                "title": "Return And Refound Policy",
+                "path": "/return-and-refund-policy"
+            },
+            {
+                "title": "Contact Us",
+                "path": "/contact-us"
+            }
+        ]
+    }
+]

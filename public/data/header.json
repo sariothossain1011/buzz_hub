@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Great Deal",
+        "link": "/gread_deal"
+    },
+    {
+        "title": "Our Brands",
+        "link": "/our_brands"
+    },
+    {
+        "title": "Help & support",
+        "link": "/help_&_support"
+    },
+    {
+        "title": "Login",
+        "link": "/login"
+    },
+    {
+        "title": "SignUp",
+        "link": "/signup"
+    }
+]
