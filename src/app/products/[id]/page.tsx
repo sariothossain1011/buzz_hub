@@ -1,28 +1,93 @@
-
+'use client'
+import { instance } from '@/axios/axiosInstance';
 import Button from '@/components/button/Button';
-import getSingleProduct from '@/lib/api/getSingleProduct';
+import { IProduct } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import { useParams } from "next/navigation";
 interface SingleProductProps {
-  params: { id: number }
+  params: { id: string }
 }
-const SingleProductPage: React.FC<SingleProductProps> = async ({ params }) => {
-  const { id } = params;
-  const product = await getSingleProduct(id);
+const SingleProductPage =  () => {
+  // console.log(params?.id,"params")
+  const { id } = useParams();
+  const [product, setProducts] = useState<IProduct>({
+    id: '',
+    image: '',
+    name: '',
+    brand: '',
+    category: '',
+    price: 0,
+    productCode: '',
+    quantity: 0,
+    model: '',
+    processor: '',
+    ram: '',
+    resolution: '',
+    display: '',
+    camera: '',
+    battery: '',
+    ports: '',
+    features: '',
+    reference: '',
+    isFeatured: false,
+  });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  
+  useEffect(() => {
+    if (!id) return; 
+  
+    const fetchProducts = async () => {
+      setIsLoading(true); 
+      try {
+        const response = await instance.get(`Product/${id}`);
+        
+        if (response?.data?.message) {
+          setProducts(response.data.message);
+        }
+      } catch (error) {
+        console.error("Failed to fetch Products", error);
+        setProducts({
+          id: '',
+          image: '',
+          name: '',
+          brand: '',
+          category: '',
+          price: 0,
+          productCode: '',
+          quantity: 0,
+          model: '',
+          processor: '',
+          ram: '',
+          resolution: '',
+          display: '',
+          camera: '',
+          battery: '',
+          ports: '',
+          features: '',
+          reference: '',
+          isFeatured: false,
+        });
+      } finally {
+        setIsLoading(false); // End loading state.
+      }
+    };
+  
+    fetchProducts();
+  }, [id]);
+  
 
   return (
     <div className='py-20'>
       <div className=' grid grid-cols-1 md:grid-cols-2 gap-4'>
         <div className=' flex justify-center'>
-          <Image src={`${product?.image}`} alt={`${product?.name}`} width={400} height={300} />
+          <Image src={product.image} alt={product?.name} width={400} height={300} />
         </div>
         <div className=' flex flex-col gap-6'>
           <h1 className='text-xl md:text-2xl font-bold'>{product?.name}</h1>
-          {/* <p className=' text-lg md:text-xl font-medium text-blue-500'>  <span>৳{product?.price}</span> </p> */}
           <div className='flex flex-wrap gap-2'>
-            <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Price :</span> {product?.name}</p>
+            <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Price :</span> {product?.price}</p>
             <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Status :</span> {product?.quantity && product?.quantity > 0 ? "In Stock" : "Stock Out"}</p>
             <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Prodcut Code :</span> {product?.productCode}</p>
             <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Brand :</span> {product?.brand}</p>
@@ -33,9 +98,14 @@ const SingleProductPage: React.FC<SingleProductProps> = async ({ params }) => {
             <p >Model: {product?.model}</p>
             <p >Processor: {product?.processor}</p>
             <p >Ram: {product?.ram}</p>
+            <p >Resolution: {product?.resolution}</p>
+            <p >Camera: {product?.camera}</p>
+            <p >Battery: {product?.battery}</p>
+            <p >Ports: {product?.ports}</p>
             <p >Display: {product?.display}</p>
             <p >Features: {product?.features}</p>
           </div>
+          <p className='text-sm font-normal'>Reference: {product?.reference}</p>
 
           <div className=' min-w-full flex flex-row gap-4  items-center'>
             <Button name='ADD TO CART' />

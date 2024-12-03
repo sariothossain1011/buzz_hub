@@ -11,12 +11,16 @@ import { RootState } from "@/redux/store/Store";
 import { IStoreItem } from "@/types";
 import Button from "@/components/button/Button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import LoadingSpinner from "@/components/common/LoadingSpinner";
 
 
 
 const CheckoutPage = () => {
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const [selectedDeliveryLocation, setSelectedDeliveryLocation] = useState<string>("insite-dhaka");
-
 
   const [selectedPayment, setSelectedPayment] = useState({
     title: "",
@@ -27,22 +31,16 @@ const CheckoutPage = () => {
     (state: RootState) => state.cart.cartItems as IStoreItem[]
   )
 
-
-
-
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedDeliveryLocation(event.target.value);
   };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const submitHandler = async (data: any) => {
+  const submitHandler = async (data:any) => {
     console.log(data);
-
-
 
   };
 
   const subtotal = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + item?.price * item?.quantity,
     0
   );
   const deliveryCost = selectedDeliveryLocation === "insite-dhaka" ? 70 : 130;
@@ -155,7 +153,8 @@ const CheckoutPage = () => {
               Bkash
             </button>
           </div>
-          <Button name={"PAY Now"} />
+          {error && <p className="text-red-500 text-[10px]">{error}</p>}
+          <Button name={`${loading ? <LoadingSpinner /> : "PAY Now"}`} />
 
         </Form>
         <div className="flex flex-col gap-4">
@@ -178,12 +177,12 @@ const CheckoutPage = () => {
                   <p>{item.name}</p>
                 </div>
               </div>
-              <div className="text-sm font-normal">৳{item.price}</div>
+              <div className="text-sm font-normal">৳{item?.price}</div>
             </div>
           ))}
           <div className="flex flex-row justify-between items-center text-sm font-normal">
             <span>Sub-total</span>
-            <span>৳{subtotal}</span>
+            <span>৳{ subtotal}</span>
           </div>
           <div className="flex flex-row justify-between items-center text-sm font-normal">
             <span>Shipping</span>

@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux'
 import CardButton from '../button/CardButton'
 interface ProductsProps {
     product: IProduct,
-    // key: number;
 }
 
 const ProductCard: React.FC<ProductsProps> = ({ product }) => {
@@ -33,27 +32,6 @@ const ProductCard: React.FC<ProductsProps> = ({ product }) => {
         reference: product.reference,
         isFeatured: product.isFeatured,
         
-//   id:number,
-//   image: string;
-//   name: string;
-//   brand: string;
-//   category: string;
-//   price: number;
-//   productCode: string;
-//   quantity: number;
-
-//   // Key features
-//   model?: string;
-//   processor?: string;
-//   ram?: string;
-//   resolution?: string;
-//   display?: string;
-//   camera?: string;
-//   battery?: string;
-//   ports?: string;
-//   features?: string;
-//   reference?: string;
-//   isFeatured?: boolean;
     })
     useEffect(() => {
         setProductItem((prevProductItem) => ({

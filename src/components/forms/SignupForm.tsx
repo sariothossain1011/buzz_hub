@@ -1,68 +1,50 @@
 "use client"
 import { instance } from '@/axios/axiosInstance';
-// import { instance } from '@/axios/axiosInstance';
 import Form from '@/components/forms/Form';
 import FormInput from '@/components/forms/FormInput';
-// import Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
-import Button from '../button/Button';
-// import LoadingSpinner from '../common/LoadingSpinner';
-const REGISTER_MUTATION = `
- mutation Register($input: RegisterInput!) {
-  register(input: $input) {
-      accessToken
-    }
-  }
-`;
+import LoadingSpinner from '../common/LoadingSpinner';
+
 const SignupForm = () => {
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     const handleRegister = async ({
-        fullName,
+        fName,
+        lName,
+        phone,
         email,
         password,
     }: {
-        fullName: string,
+        fName: string,
+        lName: string;
+        phone: string;
         email: string;
         password: string;
     }) => {
         setLoading(true);
         setError(null);
         try {
-            const response = await instance.post("/", {
-                query: REGISTER_MUTATION,
-                variables: {
-                    input: {
-                        fullName,
-                        email,
-                        password,
-                    },
-                },
-            });
-            if (response.data.errors?.length) {
-                setError(response.data.errors[0].message);
-                return;
-            }
-            if (response.data.data.register.accessToken) {
+            const response = await instance.post("Signup", { fName, lName, phone, email, password });
+            if (response?.data?.token) {
                 typeof window !== "undefined" &&
-                    // Cookies.set(
-                    //     "accessKey",
-                    //     response.data.data.register.accessToken
-                    // );
-                router.push("/account");
+                    Cookies.set(
+                        "accessKey",
+                        response?.data?.token
+                    );
+                router.push("/");
             }
-
         } catch (error) {
             setError("Something went wrong");
         } finally {
             setLoading(false);
         }
     };
-   
+
 
     return (
         <Form submitHandler={handleRegister} className=' min-w-full flex flex-col gap-4'>
@@ -73,7 +55,10 @@ const SignupForm = () => {
             <FormInput name='password' id='password' placeholder='PASSWORD' type="password" className='  min-w-full border hover:border-black rounded-sm px-4 py-3 text-sm' />
             {error && <p className="text-red-500 text-[10px]">{error}</p>}
             <p className=' text-sm font-normal'>If you don&apos;t have an account, please<Link href="/login" className='text-sm font-semibold text-blue underline'> Login Here</Link></p>
-            <Button name="SIGNUP" className=' rounded-sm'/>
+            {/* <Button name="SIGNUP" className=' rounded-sm'/> */}
+            <button className='w-full bg-blue hover:bg-light_red text-white hover:text-[#33101C] text-sm font-semibold shadow-sm py-3 rounded-sm duration-300 ease-in'>
+                {loading ? <LoadingSpinner /> : "SIGNUP"}
+            </button>
         </Form>
     )
 }

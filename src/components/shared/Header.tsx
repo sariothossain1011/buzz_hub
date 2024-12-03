@@ -1,4 +1,5 @@
 "use client"
+import Cookies from "js-cookie";
 import menuData from '../../../public/data/header.json';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -11,10 +12,11 @@ import SearchForm from '../forms/SearchForm';
 
 
 const Header = () => {
-  const [isMounted, setIsMounted] = useState(false); 
+  const [isMounted, setIsMounted] = useState(false);
   const [menu, setMenu] = useState<MenuItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const token = Cookies.get("accessKey");
 
   const { cartCount } = useSelector((state: RootState) => ({
     cartCount: state.cart.cartCount,
@@ -23,7 +25,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    setIsMounted(true); 
+    setIsMounted(true);
     setMenu(menuData);
   }, []);
 
@@ -37,13 +39,24 @@ const Header = () => {
         <div className=' hidden sm:block'>
           <nav className='flex flex-col items-center py-2'>
             <ul className=' flex flex-row gap-5'>
-              {menu.map((item) => (
-                <li key={item.title} className=''>
-                  <div className='flex justify-between items-center cursor-pointer relative px-2 text-white md:hover:text-black' >
-                    <Link href={item.link}>{item.title}</Link>
-                  </div>
-                </li>
-              ))}
+              <li className='px-2 text-white md:hover:text-black'><Link href='/gread_deal'>Great Deal</Link></li>
+              <li className='px-2 text-white md:hover:text-black'><Link href='/our_brands'>Our Brands</Link></li>
+              <li className='px-2 text-white md:hover:text-black'><Link href='/help_and_support'>Help & Support</Link></li>
+              {token ? (
+                <>
+                <li className='px-2 text-white md:hover:text-black'><Link href='/account'>Account</Link></li>
+                <li className='px-2 text-white md:hover:text-black'><Link href='' onClick={()=>Cookies.remove("accessKey")}>Logout</Link></li>
+                </>
+                
+              ) : (
+                <>
+                  <li className='px-2 text-white md:hover:text-black'><Link href='/login'>Login</Link></li>
+                  <li className='px-2 text-white md:hover:text-black'><Link href='/signup'>SignUp</Link></li>
+                </>
+              )}
+
+
+
             </ul>
           </nav>
         </div>
@@ -52,8 +65,8 @@ const Header = () => {
             <FaBars size={24} onClick={() => setIsOpen(!isOpen)} className="cursor-pointer block sm:hidden " />
 
             <Link href='/' className=' text-black text-xl md:text-3xl font-extrabold italic'>BUZZ HUB</Link>
-            
-          
+
+
 
             {isOpen && (
               <nav className='absolute top-[56px] left-0 z-40 bg-white text-black shadow-lg min-w-64 rounded-sm'>
@@ -69,10 +82,10 @@ const Header = () => {
               </nav>
             )}
           </div>
-          <SearchForm/>
+          <SearchForm />
 
           <div className='flex flex-row items-center gap-4 md:gap-6'>
-          
+
             <Link href="/cart" className='relative'>
               <MdOutlineShoppingBag size={27} className=' hover:text-light_red' />
               {isMounted && (

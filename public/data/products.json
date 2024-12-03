@@ -2,7 +2,7 @@
     {
       "id": 1,
       "image": "https://www.startech.com.bd/image/cache/catalog/laptop/lenovo/ideapad-slim-3/ideapad-slim-3-05-500x500.webp",
-      "name": "XPro 15",
+      "name": "Lenovo Yoga 7 2-in-1 14AHP9 Ryzen 7 8840HS AI Integrated 14 Touch Laptop",
       "brand": "TechCore",
       "category":"Laptop",
       "price": 1299.99,
@@ -17,7 +17,8 @@
       "battery": "10 hours",
       "ports": "2x USB-C, 1x HDMI",
       "features": "Fingerprint sensor, Backlit keyboard",
-      "isFeatured": true
+      "isFeatured": true,
+      "reference":"Daraz"
     },
     {
       "id": 2,
@@ -37,12 +38,13 @@
       "battery": "12 hours",
       "ports": "2x USB-A, 1x USB-C",
       "features": "Ultra-slim design",
-      "isFeatured": false
+      "isFeatured": false,
+      "reference":"Daraz"
     },
     {
       "id": 3,
       "image": "https://www.startech.com.bd/image/cache/catalog/laptop/lenovo/ideapad-slim-3/ideapad-slim-3-05-500x500.webp",
-      "name": "Photon Z",
+      "name": "Lenovo IdeaPad Slim 3 15AMN8 Ryzen 5 7520U 15.6 FHD TN Laptop",
       "brand": "MobileTech",
       "category":"Laptop",
       "price": 699.99,
@@ -57,7 +59,8 @@
       "battery": "5000mAh",
       "ports": "USB-C",
       "features": "5G, Wireless charging",
-      "isFeatured": true
+      "isFeatured": true,
+      "reference":"Daraz"
     },
     {
       "id": 4,
@@ -77,7 +80,8 @@
       "battery": null,
       "ports": "4x USB-A, 2x USB-C, 1x HDMI",
       "features": "VR Ready, RGB Lighting",
-      "isFeatured": true
+      "isFeatured": true,
+      "reference":"Daraz"
     },
     {
       "id": 5,
@@ -97,12 +101,13 @@
       "battery": null,
       "ports": "3x USB-A, 2x USB-C, 1x DisplayPort",
       "features": "Compact design, Low-noise fans",
-      "isFeatured": false
+      "isFeatured": false,
+      "reference":"Daraz"
     },
     {
       "id": 6,
       "image": "https://www.startech.com.bd/image/cache/catalog/laptop/lenovo/ideapad-slim-3/ideapad-slim-3-05-500x500.webp",
-      "name": "VisionView 27",
+      "name": "Lenovo IdeaPad Slim 3 15AMN8 Ryzen 5 7520U 15.6 FHD TN Laptop",
       "brand": "ScreenTech",
       "category":"Laptop",
       "price": 299.99,
@@ -117,7 +122,8 @@
       "battery": null,
       "ports": "2x HDMI, 1x DisplayPort",
       "features": "HDR10, Thin bezels",
-      "isFeatured": true
+      "isFeatured": true,
+      "reference":"Daraz"
     }
   ]
   

@@ -62,7 +62,7 @@ export interface IAddToCart {
   // image: string;
 
 
-  id:number,
+  id:string,
   image: string;
   name: string;
   brand: string;
@@ -95,7 +95,7 @@ export interface IStoreItem extends IAddToCart {
 
 
 export interface IProduct {
-  id:number,
+  id:string,
   image: string;
   name: string;
   brand: string;

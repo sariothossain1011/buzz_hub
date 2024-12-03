@@ -13,7 +13,7 @@ const SearchForm = () => {
     <div className='hidden sm:flex'>
      <Form submitHandler={handleSubmit} className='-w-full flex flex-row justify-center   '>
         <FormInput name='search' placeholder='Search Products...' className='w-full bg-white text-black outline-none px-4' />
-        <button className='   text-black bg-white mt-1 px-2 border-l-2 border-black'><IoSearchOutline size={22} /></button>
+        <button className='   text-black bg-white mt-1 px-3 border-l-2 border-black'><IoSearchOutline size={22} /></button>
       </Form>
     </div>
   )

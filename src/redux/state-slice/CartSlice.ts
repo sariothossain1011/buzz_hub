@@ -28,7 +28,6 @@ const loadCartFromLocalStorage = (): CartState => {
   return { cartItems: [], cartCount: 0, comment: "" };
 };
 
-
 const saveCartToLocalStorage = (state: CartState) => {
   typeof window !== "undefined" &&
     localStorage.setItem("cart", JSON.stringify(state));
@@ -49,15 +48,15 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     setCart: (state, action: PayloadAction<IAddToCart & { quantity: number }>) => {
-      const { id, title, discountPrice, quantity, uuid, date } = {
+      const { id, name, price, quantity, uuid, date } = {
         ...action.payload, uuid: uuidv4(),
         date: new Date().toISOString(),
       };
       const existingItemIndex = state.cartItems.findIndex(
         (item) =>
           item.id === id &&
-          item.title === title &&
-          item.discountPrice === discountPrice
+          item.name === name &&
+          item.price === price
       );
 
       if (existingItemIndex === -1) {
