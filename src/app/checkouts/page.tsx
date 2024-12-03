@@ -169,12 +169,14 @@ const CheckoutPage = () => {
                     height={100}
                     className="rounded-md"
                   />
-                  <span className="absolute -top-1 -right-1 z-20 bg-light_red text-white rounded-full flex justify-center text-[14px] w-6 h-6">
+                  {/* <span className="absolute -top-1 -right-1 z-20 bg-light_red text-white rounded-full flex justify-center text-[14px] w-6 h-6">
                     {item.quantity}
-                  </span>
+                  </span> */}
                 </div>
                 <div className="text-sm font-normal">
-                  <p>{item.name}</p>
+                <p className="text-sm font-semibold">{item.name}</p>
+                <p className="text-xs font-medium">Product Code : {item.productCode}</p>
+                <p className="text-xs font-medium">Quantity: {item.quantity}</p>
                 </div>
               </div>
               <div className="text-sm font-normal">৳{item?.price}</div>

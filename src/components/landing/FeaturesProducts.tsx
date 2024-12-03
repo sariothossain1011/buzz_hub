@@ -27,7 +27,7 @@ const FeaturesProducts = () => {
         <div className=' pb-5'>
             <h1 className=' text-2xl font-extrabold italic pb-5'>Flash Sale</h1>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 border p-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 '>
                 {
                     products.map((item,) => (
                         <ProductCard product={item} key={item.id} />

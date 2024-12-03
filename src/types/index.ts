@@ -47,20 +47,6 @@ export interface Review {
 // }
 
 export interface IAddToCart {
-  // id: number;
-  // title: string;
-  // permaLink: string;
-  // weight: string;
-  // brand: string;
-  // productType: string; // Correcting prodcutType to productType
-  // productOrigin: string; // Correcting prodcutOrigin to productOrigin
-  // sku: string;
-  // price: number;
-  // discountPrice: number;
-  // quantity: number;
-  // category: string;
-  // image: string;
-
 
   id:string,
   image: string;

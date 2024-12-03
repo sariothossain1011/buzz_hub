@@ -1,16 +1,17 @@
 'use client'
 import { instance } from '@/axios/axiosInstance';
 import Button from '@/components/button/Button';
-import { IProduct } from '@/types';
+import { IAddToCart, IProduct } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import { useParams } from "next/navigation";
+import { useDispatch } from 'react-redux';
+import { setCart } from '@/redux/state-slice/CartSlice';
 interface SingleProductProps {
   params: { id: string }
 }
 const SingleProductPage =  () => {
-  // console.log(params?.id,"params")
   const { id } = useParams();
   const [product, setProducts] = useState<IProduct>({
     id: '',
@@ -76,6 +77,44 @@ const SingleProductPage =  () => {
   
     fetchProducts();
   }, [id]);
+
+// ADD TO CART 
+
+const dispatch = useDispatch();
+const [productItem, setProductItem] = useState<IAddToCart>({
+    id: product.id,
+    image: product.image,
+    name: product.name,
+    brand: product.brand,
+    category: product.category,
+    price: product.price,
+    productCode: product.productCode,
+    quantity: product.quantity,
+    
+})
+useEffect(() => {
+    setProductItem((prevProductItem) => ({
+        ...prevProductItem,
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        quantity:1,
+    }));
+}, [
+    product.id,
+    product.name,
+    product.price,
+    product.quantity
+]);
+const handleAddToCart = () => {
+    dispatch(setCart(productItem));
+};
+
+
+
+
+
+
   
 
   return (
@@ -108,7 +147,8 @@ const SingleProductPage =  () => {
           <p className='text-sm font-normal'>Reference: {product?.reference}</p>
 
           <div className=' min-w-full flex flex-row gap-4  items-center'>
-            <Button name='ADD TO CART' />
+          <Button name='Add to Cart' onClick={handleAddToCart} />
+            {/* <Button name='ADD TO CART' /> */}
             <Link href="/checkouts" className=' w-full'>
               <Button name='BUY NOW' />
             </Link>

@@ -110,13 +110,11 @@ const CartPage = () => {
                         alt={item.name}
                         width={100}
                         height={100}
-                        className=" w-20 bg-cover"
+                        className=" w-20 h-20 bg-cover"
                       />
-                      <div className="text-[12px]">
-                        <p className="font-semibold">{item.name}</p>
-                        <p className="font-medium">
-                          Size:
-                        </p>
+                      <div className="">
+                        <p className="text-sm font-semibold">{item.name}</p>
+                        <p className="text-xs font-medium">Product Code : {item.productCode}</p>
                       </div>
                     </div>
 
@@ -158,7 +156,7 @@ const CartPage = () => {
               href="/products"
               className=' w-full'
             >
-              <Button name='CONTINUE SHOPPING' />
+              <Button name='CONTINUE SHOPPING'  />
             </Link>
           </div>
         </div>
