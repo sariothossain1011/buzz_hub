@@ -9,6 +9,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useDispatch } from 'react-redux';
 import { setCart } from '@/redux/state-slice/CartSlice';
 import image_ruls from '@/urls/demo_image';
+import Loader from '@/components/common/Loader';
 
 const SingleProductPage = () => {
   const { id } = useParams();
@@ -131,7 +132,7 @@ const SingleProductPage = () => {
   };
 
   if (isLoading) {
-    return <div>Loading...........</div>
+    return <Loader/>;
   }
 
 

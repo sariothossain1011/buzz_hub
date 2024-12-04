@@ -8,6 +8,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useDispatch } from 'react-redux';
 import { setCart } from '@/redux/state-slice/CartSlice';
 import image_ruls from '@/urls/demo_image';
+import Loader from '@/components/common/Loader';
 
 const ReferencePage = () => {
   const { id } = useParams();
@@ -119,9 +120,9 @@ const ReferencePage = () => {
 
   };
 
- if(isLoading){
-  return <div>Loading...........</div>
- }
+  if (isLoading) {
+    return <Loader/>;
+  }
 
 
 
