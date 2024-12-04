@@ -8,6 +8,6 @@ export default async function getSingleProduct(id: any) {
         }
         return product;
     } catch (error) {
-        console.log(error)
+        console.log("get single product fail",error)
     }
 }

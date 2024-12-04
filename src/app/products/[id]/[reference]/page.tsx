@@ -3,14 +3,13 @@ import { instance } from '@/axios/axiosInstance';
 import Button from '@/components/button/Button';
 import { IAddToCart, IProduct } from '@/types';
 import Image from 'next/image';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import { useParams, useRouter } from "next/navigation";
 import { useDispatch } from 'react-redux';
 import { setCart } from '@/redux/state-slice/CartSlice';
 import image_ruls from '@/urls/demo_image';
 
-const SingleProductPage = () => {
+const ReferencePage = () => {
   const { id } = useParams();
   const router = useRouter();
   const [product, setProducts] = useState<IProduct>({
@@ -90,17 +89,6 @@ const SingleProductPage = () => {
     price: product.price,
     productCode: product.productCode,
     quantity: product.quantity,
-    model: product.model,
-    processor: product.processor,
-    ram: product.ram,
-    resolution: product.resolution,
-    display: product.display,
-    camera: product.camera,
-    battery: product.battery,
-    ports: product.ports,
-    features: product.features,
-    reference: product.reference,
-    isFeatured: product.isFeatured,
 
   })
   useEffect(() => {
@@ -124,15 +112,18 @@ const SingleProductPage = () => {
   };
 
 
+
   const handleBuyNow = () => {
     dispatch(setCart(productItem));
     router.push("/checkouts")
 
   };
 
-  if (isLoading) {
-    return <div>Loading...........</div>
-  }
+ if(isLoading){
+  return <div>Loading...........</div>
+ }
+
+
 
 
   return (
@@ -145,6 +136,7 @@ const SingleProductPage = () => {
           <h1 className='text-xl md:text-2xl font-bold'>{product?.name}</h1>
           <div className='flex flex-wrap gap-2'>
             <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Price :</span> {product?.price}</p>
+            <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Discount Price :</span> {product?.price * 0.8}</p>
             <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Status :</span> {product?.quantity && product?.quantity > 0 ? "In Stock" : "Stock Out"}</p>
             <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Prodcut Code :</span> {product?.productCode}</p>
             <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Brand :</span> {product?.brand}</p>
@@ -162,14 +154,10 @@ const SingleProductPage = () => {
             <p >Display: {product?.display}</p>
             <p >Features: {product?.features}</p>
           </div>
-          <Link className='text-xs font-medium underline' href={`/products/${product.id}/${product?.reference?.toLocaleLowerCase()}`}>Reference: Buy the same product on {product?.reference} at a 20% discount.</Link>
 
           <div className=' min-w-full flex flex-row gap-4  items-center'>
-            <Button name='Add to Cart' onClick={handleAddToCart} />
-            {/* <Button name='ADD TO CART' /> */}
-            {/* <Link href="/checkouts" className=' w-full'> */}
+            <Button name='ADD TO CART' onClick={handleAddToCart} />
             <Button name='BUY NOW' onClick={handleBuyNow} />
-            {/* </Link> */}
           </div>
 
         </div>
@@ -179,4 +167,4 @@ const SingleProductPage = () => {
   )
 }
 
-export default SingleProductPage
+export default ReferencePage

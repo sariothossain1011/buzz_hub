@@ -25,23 +25,23 @@ const OfferSell: React.FC = () => {
         {
             id: "1",
             title: "hello",
-            image: b1.src,
+            image: "https://www.startech.com.bd/image/cache/catalog/home/banner/winter-desktop-deal-web-banner-982x500.webp",
 
         },
         {
             id: "2",
             title: "hello",
-            image: b2.src,
+            image: "https://www.startech.com.bd/image/cache/catalog/home/gadget-fest-home-banner-2024-982x500.webp",
         },
         {
             id: "3",
             title: "hello",
-            image: b1.src,
+            image: "https://www.startech.com.bd/image/cache/catalog/home/banner/winter-desktop-deal-web-banner-982x500.webp",
         },
         {
             id: "4",
             title: "hello",
-            image: b2.src,
+            image: "https://www.startech.com.bd/image/cache/catalog/home/gadget-fest-home-banner-2024-982x500.webp",
         },
     ];
 

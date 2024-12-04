@@ -36,7 +36,6 @@ const CheckoutPage = () => {
   };
   const submitHandler = async (data:any) => {
     console.log(data);
-
   };
 
   const subtotal = cartItems.reduce(
@@ -154,7 +153,10 @@ const CheckoutPage = () => {
             </button>
           </div>
           {error && <p className="text-red-500 text-[10px]">{error}</p>}
-          <Button name={`${loading ? <LoadingSpinner /> : "PAY Now"}`} />
+          {/* <Button name={`${loading ? <LoadingSpinner /> : "PAY Now"}`} /> */}
+          <Link href="/confirmation" className=' w-full'>
+              <Button name='PAY Now' />
+            </Link>
 
         </Form>
         <div className="flex flex-col gap-4">
@@ -179,7 +181,7 @@ const CheckoutPage = () => {
                 <p className="text-xs font-medium">Quantity: {item.quantity}</p>
                 </div>
               </div>
-              <div className="text-sm font-normal">৳{item?.price}</div>
+              <div className="text-sm font-normal">৳{item?.price * item?.quantity}</div>
             </div>
           ))}
           <div className="flex flex-row justify-between items-center text-sm font-normal">
