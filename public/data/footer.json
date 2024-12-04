@@ -4,19 +4,19 @@
         "items": [
             {
                 "title": "Laptop",
-                "path": "/"
+                "path": "/products"
             },
             {
                 "title": "Desktop",
-                "path": "/"
+                "path": "/products"
             },
             {
                 "title": "HeadPhone",
-                "path": "/"
+                "path": "/products"
             },
             {
                 "title": "Mobile",
-                "path": "/"
+                "path": "/products"
             }
         ]
     },

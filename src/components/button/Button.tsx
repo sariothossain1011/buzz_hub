@@ -11,7 +11,7 @@ const Button: React.FC<IInput> = ({ name, className, onClick }) => {
         <button
             type="button"
             onClick={onClick}  // Use onClick if provided
-            className={`${className} w-full bg-blue hover:bg-light_red text-white hover:text-[#33101C] text-sm font-semibold shadow-sm py-3 rounded-full duration-300 ease-in`}
+            className={`${className} w-full bg-blue hover:bg-black text-white text-sm font-semibold shadow-sm py-3 rounded-full duration-300 ease-in`}
         >
             {name}
         </button>

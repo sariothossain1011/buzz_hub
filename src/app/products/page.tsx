@@ -43,7 +43,7 @@ const ProdcutsPage = () => {
 
   return (
     <div className='flex flex-row gap-5 py-10'>
-      <div className='w-[15%]'>
+      <div className='w-[15%] hidden md:block'>
         <div className='text-center bg-light_white py-1'>
           <h1 className='text-md font-medium'>Category</h1>
         </div>
@@ -75,7 +75,7 @@ const ProdcutsPage = () => {
           ))}
         </div>
       </div>
-      <div className='w-[80%]'>
+      <div className=' w-[100%] md:w-[80%]'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {
             filteredProducts && filteredProducts.map((item,) => (

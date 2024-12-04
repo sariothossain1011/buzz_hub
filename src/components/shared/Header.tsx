@@ -3,13 +3,13 @@ import Cookies from "js-cookie";
 import menuData from '../../../public/data/header.json';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaBars } from "react-icons/fa6";
+import { FaBars, FaUserLarge } from "react-icons/fa6";
 import { MdOutlineShoppingBag, } from "react-icons/md";
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store/Store';
 import { MenuItem } from '@/types';
 import SearchForm from '../forms/SearchForm';
-
+import { IoSearch } from "react-icons/io5";
 
 const Header = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -36,7 +36,7 @@ const Header = () => {
   return (
     <>
       <header className='bg-blue text-white'>
-        <div className=' hidden sm:block'>
+        {/* <div className=' hidden sm:block'>
           <nav className='flex flex-col items-center py-2'>
             <ul className=' flex flex-row gap-5'>
               <li className='px-2 text-white md:hover:text-black'><Link href='/gread_deal'>Great Deal</Link></li>
@@ -44,10 +44,10 @@ const Header = () => {
               <li className='px-2 text-white md:hover:text-black'><Link href='/help_and_support'>Help & Support</Link></li>
               {token ? (
                 <>
-                <li className='px-2 text-white md:hover:text-black'><Link href='/account'>Account</Link></li>
-                <li className='px-2 text-white md:hover:text-black'><Link href='' onClick={()=>Cookies.remove("accessKey")}>Logout</Link></li>
+                  <li className='px-2 text-white md:hover:text-black'><Link href='/account'>Account</Link></li>
+                  <li className='px-2 text-white md:hover:text-black'><Link href='' onClick={() => Cookies.remove("accessKey")}>Logout</Link></li>
                 </>
-                
+
               ) : (
                 <>
                   <li className='px-2 text-white md:hover:text-black'><Link href='/login'>Login</Link></li>
@@ -59,7 +59,7 @@ const Header = () => {
 
             </ul>
           </nav>
-        </div>
+        </div> */}
         <div className='container flex flex-row justify-between items-center py-3'>
           <div className='relative flex flex-row items-center gap-3'>
             <FaBars size={24} onClick={() => setIsOpen(!isOpen)} className="cursor-pointer block sm:hidden " />
@@ -69,12 +69,12 @@ const Header = () => {
 
 
             {isOpen && (
-              <nav className='absolute top-[56px] left-0 z-40 bg-white text-black shadow-lg min-w-64 rounded-sm'>
+              <nav className='absolute top-[56px] left-0 z-40 bg-white shadow-lg min-w-64 rounded-sm'>
                 <ul className='space-y-3 pt-2'>
                   {menu.map((item) => (
                     <li key={item.title} className='relative border-b pb-2'>
                       <div className='flex justify-between items-center cursor-pointer relative px-2 ' onClick={() => toggleSubMenu(item.title)}>
-                        <Link href={item.link} className='text-white md:hover:text-black'>{item.title}</Link>
+                        <Link href={item.link} className='text-black md:hover:text-black'>{item.title}</Link>
                       </div>
                     </li>
                   ))}
@@ -82,10 +82,34 @@ const Header = () => {
               </nav>
             )}
           </div>
-          <SearchForm />
+          {/* <SearchForm /> */}
+
+
+<div className=" hidden sm:flex">
+<nav className=' flex flex-col items-center py-2'>
+            <ul className=' flex flex-row gap-0 md:gap-3'>
+
+              <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/about-us'>About Us</Link></li>
+              <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/products'>Products</Link></li>
+              <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/great-deal'>Great Deal</Link></li>
+              <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/our-brands'>Our Brands</Link></li>
+              <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/help-and-support'>Help & Support</Link></li>
+            </ul>
+          </nav>
+</div>
+
+
+
+
+
+
+
+
 
           <div className='flex flex-row items-center gap-4 md:gap-6'>
-
+            <Link href="/login">
+              <IoSearch size={22} className=' hover:text-[#f0c76e]' />
+            </Link>
             <Link href="/cart" className='relative'>
               <MdOutlineShoppingBag size={27} className=' hover:text-light_red' />
               {isMounted && (
@@ -94,6 +118,19 @@ const Header = () => {
                 </span>
               )}
             </Link>
+            {
+              token ? (
+                <Link href="/account">
+                  <FaUserLarge size={22} className=' hover:text-[#f0c76e]' />
+                </Link>
+              ) : (
+                <Link href="/login">
+                  <FaUserLarge size={22} className=' hover:text-[#f0c76e]' />
+                </Link>
+              )
+            }
+
+
           </div>
         </div>
 
