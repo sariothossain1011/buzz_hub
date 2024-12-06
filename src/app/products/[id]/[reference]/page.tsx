@@ -20,6 +20,7 @@ const ReferencePage = () => {
     brand: '',
     category: '',
     price: 0,
+    discountPrice:0,
     productCode: '',
     quantity: 0,
     model: '',
@@ -56,6 +57,7 @@ const ReferencePage = () => {
           brand: '',
           category: '',
           price: 0,
+          discountPrice:0,
           productCode: '',
           quantity: 0,
           model: '',
@@ -88,6 +90,7 @@ const ReferencePage = () => {
     brand: product.brand,
     category: product.category,
     price: product.price,
+    discountPrice:product.discountPrice,
     productCode: product.productCode,
     quantity: product.quantity,
 
