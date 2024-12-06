@@ -52,24 +52,23 @@ const SearchForm = () => {
   };
 
   return (
-    <div className="hidden sm:flex">
+
       <Form
         submitHandler={handleSubmit}
-        className="w-full flex flex-row justify-center"
+        className="w-full flex flex-row justify-center "
       >
         <FormInput
           name="search"
           placeholder="Search Products..."
-          className="w-full bg-white text-black outline-none px-4"
+          className="w-full bg-white text-black outline-none px-4 border-l-2 border-t-2 border-b-2 border-light_white rounded-sm"
         />
         <button
           type="submit"
-          className="text-black bg-white mt-1 px-3 border-l-2 border-black"
+          className="text-white bg-blue mt-1 px-4 border-r-2 border-t-2 border-b-2 border-blue rounded-sm"
         >
           <IoSearchOutline size={22} />
         </button>
       </Form>
-    </div>
   );
 };
 

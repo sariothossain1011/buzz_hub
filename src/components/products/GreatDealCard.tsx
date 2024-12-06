@@ -9,7 +9,7 @@ interface ProductsProps {
     product: IProduct,
 }
 
-const ProductCard: React.FC<ProductsProps> = ({ product }) => {
+const GreatDealCard: React.FC<ProductsProps> = ({ product }) => {
     const dispatch = useDispatch();
     const [productItem, setProductItem] = useState<IAddToCart>({
         id: product.id,
@@ -18,7 +18,7 @@ const ProductCard: React.FC<ProductsProps> = ({ product }) => {
         brand: product.brand,
         category: product.category,
         price: product.price,
-        discountPrice: product.discountPrice,
+        discountPrice:product.discountPrice,
         productCode: product.productCode,
         quantity: product.quantity,
         model: product.model,
@@ -64,7 +64,7 @@ const ProductCard: React.FC<ProductsProps> = ({ product }) => {
                     </div>
                </div>
                 <h2 className='text-sm font-semibold'>{product.name}</h2>
-                <p className=' text-blue-500'>   <span>৳{product.price}</span> </p>
+                <p className=' text-blue-500'>   <span className="line-through">৳{product.price}</span>  {<span>৳{product.discountPrice}</span>}  </p>
                 <div className=' min-w-full flex flex-row gap-4  justify-between items-center text-md font-semibold '>
                     <CardButton name='Add to Cart' onClick={handleAddToCart} />
                     <Link href={`/products/${product.id}`} className=' w-full' ><CardButton name='Details' /></Link>
@@ -74,4 +74,4 @@ const ProductCard: React.FC<ProductsProps> = ({ product }) => {
     )
 }
 
-export default ProductCard
+export default GreatDealCard;

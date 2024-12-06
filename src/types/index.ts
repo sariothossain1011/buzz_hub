@@ -54,6 +54,7 @@ export interface IAddToCart {
   brand: string;
   category: string;
   price: number;
+  discountPrice: number;
   productCode: string;
   quantity: number;
 
@@ -87,6 +88,7 @@ export interface IProduct {
   brand: string;
   category: string;
   price: number;
+  discountPrice: number;
   productCode: string;
   quantity: number;
 

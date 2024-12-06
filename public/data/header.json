@@ -1,22 +1,22 @@
 [
     {
+        "title": "About Us",
+        "link": "/about-us"
+    },
+    {
+        "title": "products",
+        "link": "/products"
+    },
+    {
         "title": "Great Deal",
-        "link": "/gread_deal"
+        "link": "/great-deal"
     },
     {
         "title": "Our Brands",
-        "link": "/our_brands"
+        "link": "/our-brands"
     },
     {
         "title": "Help & support",
-        "link": "/help_and_support"
-    },
-    {
-        "title": "Login",
-        "link": "/login"
-    },
-    {
-        "title": "SignUp",
-        "link": "/signup"
+        "link": "/help-and-support"
     }
 ]

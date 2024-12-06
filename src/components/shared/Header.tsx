@@ -14,7 +14,8 @@ import { IoSearch } from "react-icons/io5";
 const Header = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [menu, setMenu] = useState<MenuItem[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenSearch, setIsOpenSearch] = useState(false);
+  const [isOpenHeader, setIsOpenHeader] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const token = Cookies.get("accessKey");
 
@@ -35,7 +36,7 @@ const Header = () => {
 
   return (
     <>
-      <header className='bg-blue text-white'>
+      <header className='bg-blue text-white '>
         {/* <div className=' hidden sm:block'>
           <nav className='flex flex-col items-center py-2'>
             <ul className=' flex flex-row gap-5'>
@@ -60,20 +61,20 @@ const Header = () => {
             </ul>
           </nav>
         </div> */}
-        <div className='container flex flex-row justify-between items-center py-3'>
+        <div className='relative  container flex flex-row justify-between items-center py-3'>
           <div className='relative flex flex-row items-center gap-3'>
-            <FaBars size={24} onClick={() => setIsOpen(!isOpen)} className="cursor-pointer block sm:hidden " />
+            <FaBars size={24} onClick={() => setIsOpenHeader(!isOpenHeader)} className="cursor-pointer block sm:hidden " />
 
             <Link href='/' className=' text-black text-xl md:text-3xl font-extrabold italic'>BUZZ HUB</Link>
 
 
 
-            {isOpen && (
-              <nav className='absolute top-[56px] left-0 z-40 bg-white shadow-lg min-w-64 rounded-sm'>
+            {isOpenHeader && (
+              <nav className='absolute top-[40px] left-0 z-40 bg-white shadow-lg min-w-64 rounded-sm'>
                 <ul className='space-y-3 pt-2'>
                   {menu.map((item) => (
-                    <li key={item.title} className='relative border-b pb-2'>
-                      <div className='flex justify-between items-center cursor-pointer relative px-2 ' onClick={() => toggleSubMenu(item.title)}>
+                    <li key={item.title} className='relative border-b-2 border-black pb-2'>
+                      <div className='flex justify-between items-center cursor-pointer relative px-4 ' onClick={() => toggleSubMenu(item.title)}>
                         <Link href={item.link} className='text-black md:hover:text-black'>{item.title}</Link>
                       </div>
                     </li>
@@ -82,34 +83,32 @@ const Header = () => {
               </nav>
             )}
           </div>
-          {/* <SearchForm /> */}
+          {/* SEARCH BAR */}
+          {
+            isOpenSearch && (
+              <div className=" absolute z-20 top-[55px] md:top-[56px] right-2 md:right-24 lg:right-28">
+                <SearchForm/>
+              </div>
+            )
+          }
 
+          <div className=" hidden sm:flex">
+            <nav className=' flex flex-col items-center py-2'>
+              <ul className=' flex flex-row gap-0 md:gap-3'>
 
-<div className=" hidden sm:flex">
-<nav className=' flex flex-col items-center py-2'>
-            <ul className=' flex flex-row gap-0 md:gap-3'>
-
-              <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/about-us'>About Us</Link></li>
-              <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/products'>Products</Link></li>
-              <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/great-deal'>Great Deal</Link></li>
-              <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/our-brands'>Our Brands</Link></li>
-              <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/help-and-support'>Help & Support</Link></li>
-            </ul>
-          </nav>
-</div>
-
-
-
-
-
-
-
-
+                <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/about-us'>About Us</Link></li>
+                <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/products'>Products</Link></li>
+                <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/great-deal'>Great Deal</Link></li>
+                <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/our-brands'>Our Brands</Link></li>
+                <li className='px-1 md:px-2 text-sm md:text-md font-medium text-white md:hover:text-black'><Link href='/help-and-support'>Help & Support</Link></li>
+              </ul>
+            </nav>
+          </div>
 
           <div className='flex flex-row items-center gap-4 md:gap-6'>
-            <Link href="/login">
-              <IoSearch size={22} className=' hover:text-[#f0c76e]' />
-            </Link>
+
+            <IoSearch size={22} className=' text-white' onClick={() => setIsOpenSearch(!isOpenSearch)} />
+
             <Link href="/cart" className='relative'>
               <MdOutlineShoppingBag size={27} className=' hover:text-light_red' />
               {isMounted && (
@@ -121,21 +120,25 @@ const Header = () => {
             {
               token ? (
                 <Link href="/account">
-                  <FaUserLarge size={22} className=' hover:text-[#f0c76e]' />
+                  <FaUserLarge size={22} className=' text-white' />
                 </Link>
               ) : (
                 <Link href="/login">
-                  <FaUserLarge size={22} className=' hover:text-[#f0c76e]' />
+                  <FaUserLarge size={22} className=' text-white' />
                 </Link>
               )
             }
 
 
           </div>
+        
         </div>
 
-        {isOpen && (
-          <div className='fixed inset-0 bg-black/40 z-10' onClick={() => setIsOpen(false)} />
+        {isOpenHeader && (
+          <div className='fixed inset-0 bg-black/40 z-10' onClick={() => setIsOpenHeader(false)} />
+        )}
+                {isOpenSearch && (
+          <div className='fixed inset-0  z-10' onClick={() => setIsOpenSearch(false)} />
         )}
       </header>
 
