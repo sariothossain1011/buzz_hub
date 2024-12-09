@@ -56,7 +56,7 @@ const SignupForm = () => {
             {error && <p className="text-red-500 text-[10px]">{error}</p>}
             <p className=' text-sm font-normal'>If you don&apos;t have an account, please<Link href="/login" className='text-sm font-semibold text-blue underline'> Login Here</Link></p>
             {/* <Button name="SIGNUP" className=' rounded-sm'/> */}
-            <button className='w-full bg-blue hover:bg-light_red text-white hover:text-[#33101C] text-sm font-semibold shadow-sm py-3 rounded-sm duration-300 ease-in'>
+            <button className='w-full bg-blue hover:bg-black text-white text-sm font-semibold shadow-sm py-3 rounded-sm duration-300 ease-in'>
                 {loading ? <LoadingSpinner /> : "SIGNUP"}
             </button>
         </Form>

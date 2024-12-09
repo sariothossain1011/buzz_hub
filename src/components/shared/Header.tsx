@@ -10,6 +10,7 @@ import { RootState } from '@/redux/store/Store';
 import { MenuItem } from '@/types';
 import SearchForm from '../forms/SearchForm';
 import { IoSearch } from "react-icons/io5";
+import Image from "next/image";
 
 const Header = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -65,7 +66,16 @@ const Header = () => {
           <div className='relative flex flex-row items-center gap-3'>
             <FaBars size={24} onClick={() => setIsOpenHeader(!isOpenHeader)} className="cursor-pointer block sm:hidden " />
 
-            <Link href='/' className=' text-black text-xl md:text-3xl font-extrabold italic'>BUZZ HUB</Link>
+            <Link href='/' className=' text-black text-xl md:text-3xl font-extrabold italic w-[45px] h-[45px]'>
+            <Image
+          src="/images/buzz_logo.png"
+          alt="Page Not Found"
+          layout="responsive"
+          width={100}
+          height={100}
+          className="h-full w-full object-cover"
+        />
+            </Link>
 
 
 
@@ -86,7 +96,7 @@ const Header = () => {
           {/* SEARCH BAR */}
           {
             isOpenSearch && (
-              <div className=" absolute z-20 top-[55px] md:top-[56px] right-2 md:right-24 lg:right-28">
+              <div className=" absolute z-20 top-[55px] md:top-[68px] right-2 md:right-24 lg:right-28">
                 <SearchForm/>
               </div>
             )

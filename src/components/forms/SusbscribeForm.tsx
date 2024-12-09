@@ -20,7 +20,7 @@ const SusbscribeForm = () => {
       type="email"
       className="rounded-md px-4  text-sm outline-none text-black bg-white/95 "
     />
-    <div className="absolute top-1 right-0 bottom-0 bg-black hover:bg-light_red text-white text-sm font-normal rounded-r-md py-2 w-28 flex justify-center items-center">
+    <div className="absolute top-0 right-0 bottom-0 bg-black  text-white text-sm font-normal rounded-r-md py-2 w-28 flex justify-center items-center">
       SUBSCRIBE
     </div>
   </Form>

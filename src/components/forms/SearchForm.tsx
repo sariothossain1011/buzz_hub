@@ -64,7 +64,7 @@ const SearchForm = () => {
         />
         <button
           type="submit"
-          className="text-white bg-blue mt-1 px-4 border-r-2 border-t-2 border-b-2 border-blue rounded-sm"
+          className="text-white bg-blue px-4 border-r-2 border-t-2 border-b-2 border-blue rounded-sm"
         >
           <IoSearchOutline size={22} />
         </button>

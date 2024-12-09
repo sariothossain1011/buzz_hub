@@ -12,8 +12,9 @@ instance.defaults.baseURL = "https://buzz-hub-backend.onrender.com/api/v1/";
 instance.interceptors.request.use(
   function (config) {
     const accessToken = typeof window !== "undefined" && Cookies.get("accessKey");
+ 
     if (accessToken) {
-      config.headers.Authorization = accessToken;
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
     return config;
   },
