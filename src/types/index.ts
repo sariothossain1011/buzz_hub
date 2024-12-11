@@ -27,24 +27,7 @@ export interface Review {
   comment: string;
 }
 
-// Main product interface
-// export interface IProduct {
-//   id: number;
-//   title: string;
-//   permaLink: string;
-//   weight: string;
-//   brand: string;
-//   productType: string; // Correcting prodcutType to productType
-//   productOrigin: string; // Correcting prodcutOrigin to productOrigin
-//   sku: string;
-//   price: number;
-//   discountPrice: number;
-//   quantity: number;
-//   category: string;
-//   image: string;
-//   description: Description[]; // Array of description objects
-//   review: Review[]; // Array of review objects
-// }
+
 
 
 export interface IUser {
