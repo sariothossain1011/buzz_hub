@@ -1,30 +1,56 @@
-// "use client"
-// import Form from '@/components/forms/Form'
-// import FormInput from '@/components/forms/FormInput'
+
+
+
+
+
+// "use client";
+// import Form from '@/components/forms/Form';
+// import FormInput from '@/components/forms/FormInput';
 // import { fetchProducts } from '@/redux/state-slice/ProductSlice';
 // import { AppDispatch } from '@/redux/store/Store';
-// import React, { useEffect } from 'react'
-
+// import { useRouter } from 'next/navigation';
+// import React from 'react';
 // import { IoSearchOutline } from "react-icons/io5";
 // import { useDispatch } from 'react-redux';
 // const SearchForm = () => {
-// const dispatch = useDispatch<AppDispatch>();
-//   const handleSubmit = (data:any) => {
-//     useEffect(() => {
-//       dispatch(fetchProducts({ category: '',brand:'', keyword: `$${data.search}` }));
-//     }, [dispatch]);
-//   }
+//   const router = useRouter();
+//   const dispatch = useDispatch<AppDispatch>();
+//   const handleSubmit = (data: { search: string }) => {
+//     dispatch(fetchProducts({ category: '', brand: '', keyword: data?.search || '' }));
+//     if(!data?.search){
+//       router.push("/products")
+//     }
+//   };
 //   return (
-//     <div className='hidden sm:flex'>
-//      <Form submitHandler={handleSubmit} className='-w-full flex flex-row justify-center   '>
-//         <FormInput name='search' placeholder='Search Products...' className='w-full bg-white text-black outline-none px-4' />
-//         <button className='   text-black bg-white mt-1 px-3 border-l-2 border-black'><IoSearchOutline size={22} /></button>
+//       <Form
+//         submitHandler={handleSubmit}
+//         className="w-full flex flex-row justify-center "
+//       >
+//         <FormInput
+//           name="search"
+//           placeholder="Search Products..."
+//           className="w-full bg-white text-black outline-none px-4 border-l-2 border-t-2 border-b-2 border-light_white rounded-sm"
+//         />
+//         <button
+//           type="submit"
+//           className="text-white bg-blue px-4 border-r-2 border-t-2 border-b-2 border-blue rounded-sm"
+//         >
+//           <IoSearchOutline size={22} />
+//         </button>
 //       </Form>
-//     </div>
-//   )
-// }
+//   );
+// };
 
 // export default SearchForm;
+
+
+
+
+
+
+
+
+
 
 
 
@@ -36,42 +62,50 @@ import FormInput from '@/components/forms/FormInput';
 import { fetchProducts } from '@/redux/state-slice/ProductSlice';
 import { AppDispatch } from '@/redux/store/Store';
 import { useRouter } from 'next/navigation';
-import React from 'react';
-
+import React, { useState } from 'react';
 import { IoSearchOutline } from "react-icons/io5";
 import { useDispatch } from 'react-redux';
 
 const SearchForm = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
+  const [searchValue, setSearchValue] = useState<string>(""); // State to manage search input value
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value); // Update state when input changes
+  };
 
   const handleSubmit = (data: { search: string }) => {
-    // Dispatch the fetchProducts action with search data
-    dispatch(fetchProducts({ category: '', brand: '', keyword: data?.search || '' }));
-    if(!data?.search){
-      router.push("/products")
+    const keyword = searchValue.trim();
+    dispatch(fetchProducts({ category: '', brand: '', keyword }));
+
+    // Update the URL parameters
+    const searchParams = new URLSearchParams();
+    if (keyword) {
+      searchParams.set("search", keyword);
     }
-  
+    router.push(`/products?${searchParams.toString()}`);
   };
 
   return (
-
-      <Form
-        submitHandler={handleSubmit}
-        className="w-full flex flex-row justify-center "
+    <Form
+      submitHandler={handleSubmit}
+      className="w-full flex flex-row justify-center"
+    >
+      <FormInput
+        name="search"
+        placeholder="Search Products..."
+        value={searchValue} // Bind input value to state
+        onChange={handleInputChange} // Update state on change
+        className="w-full bg-white text-black outline-none px-4 border-l-2 border-t-2 border-b-2 border-light_white rounded-sm"
+      />
+      <button
+        type="submit"
+        className="text-white bg-blue px-4 border-r-2 border-t-2 border-b-2 border-blue rounded-sm"
       >
-        <FormInput
-          name="search"
-          placeholder="Search Products..."
-          className="w-full bg-white text-black outline-none px-4 border-l-2 border-t-2 border-b-2 border-light_white rounded-sm"
-        />
-        <button
-          type="submit"
-          className="text-white bg-blue px-4 border-r-2 border-t-2 border-b-2 border-blue rounded-sm"
-        >
-          <IoSearchOutline size={22} />
-        </button>
-      </Form>
+        <IoSearchOutline size={22} />
+      </button>
+    </Form>
   );
 };
 
