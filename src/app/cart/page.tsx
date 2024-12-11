@@ -10,15 +10,13 @@ import { useRouter } from 'next/navigation';
 import { addComment, decrementQuantity, incrementQuantity, removeFromCart } from '@/redux/state-slice/CartSlice';
 import Button from '@/components/button/Button';
 import Jumbotron from '@/components/common/Jumbotron';
-import image_ruls from '@/urls/demo_image';
 const CartPage = () => {
 
   const router = useRouter();
   const dispatch = useDispatch();
   const [comment, setComment] = useState<string>("");
-  const [isMounted, setIsMounted] = useState(false); // Check for client-side mounting
+  const [isMounted, setIsMounted] = useState(false); 
 
-  // Use useEffect to ensure consistent state between SSR and CSR
   useEffect(() => {
     setIsMounted(true);
   }, []);

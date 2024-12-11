@@ -80,7 +80,7 @@ const Header = () => {
 
 
             {isOpenHeader && (
-              <nav className='absolute top-[40px] left-0 z-40 bg-white shadow-lg min-w-64 rounded-sm'>
+              <nav className='absolute top-[58px] left-0 z-40 bg-white shadow-lg min-w-64 rounded-sm'>
                 <ul className='space-y-3 pt-2'>
                   {menu.map((item) => (
                     <li key={item.title} className='relative border-b-2 border-black pb-2'>

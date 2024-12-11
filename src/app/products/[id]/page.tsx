@@ -74,7 +74,7 @@ const SingleProductPage = () => {
           isFeatured: false,
         });
       } finally {
-        setIsLoading(false); // End loading state.
+        setIsLoading(false);
       }
     };
 
@@ -148,7 +148,7 @@ const SingleProductPage = () => {
         <div className=' flex flex-col gap-6'>
           <h1 className='text-xl md:text-2xl font-bold'>{product?.name}</h1>
           <div className='flex flex-wrap gap-2'>
-            <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Price :</span> {product?.price}</p>
+            <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Price :</span> ৳{product?.price}</p>
             <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Status :</span> {product?.quantity && product?.quantity > 0 ? "In Stock" : "Stock Out"}</p>
             <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Prodcut Code :</span> {product?.productCode}</p>
             <p className=' inline-block px-4 py-2 rounded-full bg-light_white text-sm md:text-md font-medium'><span className=' text-gray'>Brand :</span> {product?.brand}</p>

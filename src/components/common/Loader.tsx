@@ -1,7 +1,7 @@
 const Loader: React.FC = () => {
     return (
       <div className="flex justify-center items-center h-screen ">
-        <div className="rounded-full h-20 w-20 bg-gray-400 animate-ping"></div>
+        <div className="rounded-full h-20 w-20 bg-[#9CA3AF] animate-ping"></div>
       </div>
     );
   };

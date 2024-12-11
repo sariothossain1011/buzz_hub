@@ -13,9 +13,6 @@ const ProdcutsPage = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
-  console.log(selectedBrands,selectedCategories,"lllllllll")
-
-
   useEffect(() => {
     dispatch(fetchProducts({ category: '', brand: '', keyword: '' }));
   }, [dispatch]);

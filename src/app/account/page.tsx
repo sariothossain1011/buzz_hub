@@ -6,13 +6,11 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { instance } from "@/axios/axiosInstance";
+import { SuccessToast } from "@/components/helper/validation";
+import LoadingSpinner from "@/components/common/LoadingSpinner";
+import { IUser } from "@/types";
 
-interface IUser {
-    fName: string;
-    lName: string;
-    phone: string;
-    email: string;
-}
+
 
 const AccountPage: React.FC = () => {
     const router = useRouter();
@@ -42,11 +40,11 @@ const AccountPage: React.FC = () => {
     }, []);
 
     if (!user) {
-        return <p>Loading user information...</p>;
+        return <LoadingSpinner />
     }
 
     return (
-        <div className="container">
+        <div className="container pb-10">
             <div className="text-center py-20 md:py-40">
                 <h1 className="text-2xl md:text-4xl font-semibold md:font-medium">Account</h1>
                 <p className="text-sm font-normal py-2">
@@ -70,6 +68,14 @@ const AccountPage: React.FC = () => {
                     </li>
                 </ul>
             </div>
+
+            <button onClick={() => {
+                Cookies.remove("accessKey")
+                SuccessToast("LogOut Successfully")
+                router.push('/login')
+            }} className='w-full bg-blue hover:bg-black text-white  text-sm font-semibold shadow-sm py-3 rounded-sm duration-300 ease-in'>
+                LogOut
+            </button>
         </div>
     );
 };

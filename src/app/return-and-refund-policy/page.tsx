@@ -3,8 +3,6 @@ import React from "react";
 
 const ReturnAndRefundPolicyPage = () => {
     return (
-
-
         <>
             <Jumbotron title="Return and Refund Policy" />
             <div className=" max-w-7xl mx-auto flex flex-col items-center gap-4 md:gap-8 justify-center text-sm md:text-md font-normal pb-10 ">

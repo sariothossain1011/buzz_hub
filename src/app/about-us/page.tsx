@@ -6,9 +6,6 @@ const AboutUsPage = () => {
   return (
     <div>
       <Jumbotron title="About Us" />
-
-
-
       <div className=" max-w-7xl mx-auto flex flex-col items-center gap-4 md:gap-8 justify-center text-sm font-normal pb-10 ">
 
         <div className="flex flex-col items-start gap-y-3">

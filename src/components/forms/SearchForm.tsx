@@ -48,7 +48,10 @@ const SearchForm = () => {
   const handleSubmit = (data: { search: string }) => {
     // Dispatch the fetchProducts action with search data
     dispatch(fetchProducts({ category: '', brand: '', keyword: data?.search || '' }));
-    router.push("/products")
+    if(!data?.search){
+      router.push("/products")
+    }
+  
   };
 
   return (

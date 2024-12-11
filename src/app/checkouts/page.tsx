@@ -1,31 +1,42 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Field, Label, Select } from "@headlessui/react";
 import { IoIosArrowDown } from "react-icons/io";
 import clsx from "clsx";
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store/Store";
 import { IStoreItem } from "@/types";
-import Button from "@/components/button/Button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
-
+import Cookies from "js-cookie";
+import { clearCart } from "@/redux/state-slice/CartSlice";
+import { SuccessToast } from "@/components/helper/validation";
 
 
 const CheckoutPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const token = Cookies.get("accessKey");
+  const dispatch = useDispatch();
   const [selectedDeliveryLocation, setSelectedDeliveryLocation] = useState<string>("insite-dhaka");
 
-  const [selectedPayment, setSelectedPayment] = useState({
-    title: "",
-    value: "",
-  });
+  // const [selectedPayment, setSelectedPayment] = useState({
+  //   title: "",
+  //   value: "",
+  // });
+
+
+
+  useEffect(() => {
+    if (!token) {
+      router.push("/login");
+    }
+  }, [token, router]);
 
   const cartItems = useSelector(
     (state: RootState) => state.cart.cartItems as IStoreItem[]
@@ -34,8 +45,11 @@ const CheckoutPage = () => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedDeliveryLocation(event.target.value);
   };
-  const submitHandler = async (data:any) => {
+  const submitHandler = async (data: any) => {
     console.log(data);
+    dispatch(clearCart());
+    SuccessToast("Orders Confirm!")
+    router.push("/confirmation")
   };
 
   const subtotal = cartItems.reduce(
@@ -119,7 +133,7 @@ const CheckoutPage = () => {
             className="min-w-full border hover:border-black rounded-md px-4 py-3 text-sm outline-none"
           />
 
-          <div className="flex flex-row gap-4 text-center">
+          {/* <div className="flex flex-row gap-4 text-center">
             <button
               type="button"
               onClick={() =>
@@ -151,12 +165,11 @@ const CheckoutPage = () => {
             >
               Bkash
             </button>
-          </div>
+          </div> */}
           {error && <p className="text-red-500 text-[10px]">{error}</p>}
-          {/* <Button name={`${loading ? <LoadingSpinner /> : "PAY Now"}`} /> */}
-          <Link href="/confirmation" className=' w-full'>
-              <Button name='PAY Now' />
-            </Link>
+          <button className='w-full bg-blue hover:bg-black text-white text-sm font-semibold shadow-sm py-3 rounded-sm duration-300 ease-in'>
+            {loading ? <LoadingSpinner /> : "PAY Now"}
+          </button>
 
         </Form>
         <div className="flex flex-col gap-4">
@@ -176,9 +189,9 @@ const CheckoutPage = () => {
                   </span> */}
                 </div>
                 <div className="text-sm font-normal">
-                <p className="text-sm font-semibold">{item.name}</p>
-                <p className="text-xs font-medium">Product Code : {item.productCode}</p>
-                <p className="text-xs font-medium">Quantity: {item.quantity}</p>
+                  <p className="text-sm font-semibold">{item.name}</p>
+                  <p className="text-xs font-medium">Product Code : {item.productCode}</p>
+                  <p className="text-xs font-medium">Quantity: {item.quantity}</p>
                 </div>
               </div>
               <div className="text-sm font-normal">৳{item?.price * item?.quantity}</div>
@@ -186,7 +199,7 @@ const CheckoutPage = () => {
           ))}
           <div className="flex flex-row justify-between items-center text-sm font-normal">
             <span>Sub-total</span>
-            <span>৳{ subtotal}</span>
+            <span>৳{subtotal}</span>
           </div>
           <div className="flex flex-row justify-between items-center text-sm font-normal">
             <span>Shipping</span>

@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const storeRef = useRef<AppStore | undefined>(undefined);
 
-  // Create store and dispatch actions if it hasn't been created yet
   if (!storeRef.current) {
     storeRef.current = makeStore();
   }

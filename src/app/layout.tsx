@@ -6,7 +6,7 @@ import "./globals.css";
 import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
 import StoreProvider from "./StoreProvider";
-
+import { ToastContainer } from "react-toastify";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Buzz Hub",
@@ -27,6 +27,7 @@ export default function RootLayout({
         <main className="container">{children}</main>
         <Footer />
         </StoreProvider>
+        <ToastContainer position="top-right" />
       </body>
     </html>
   );

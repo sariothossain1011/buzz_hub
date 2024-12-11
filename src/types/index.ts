@@ -46,6 +46,14 @@ export interface Review {
 //   review: Review[]; // Array of review objects
 // }
 
+
+export interface IUser {
+  fName: string;
+  lName: string;
+  phone: string;
+  email: string;
+}
+
 export interface IAddToCart {
 
   id:string,

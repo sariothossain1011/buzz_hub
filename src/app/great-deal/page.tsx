@@ -5,8 +5,6 @@ import { instance } from '@/axios/axiosInstance';
 import GreatDealCard from '@/components/products/GreatDealCard';
 import Loader from '@/components/common/Loader';
 
-
-
 const GreatDealpage = () => {
     const [products, setProducts] = useState<IProduct[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -14,7 +12,6 @@ const GreatDealpage = () => {
         const fetchProducts = async () => {
             setIsLoading(true)
             try {
-             
                 const response = await instance.get('Product/All');
                 if (response?.data?.message) {
                     const discountedProducts = response.data.message.filter((product: IProduct) => product.discountPrice);

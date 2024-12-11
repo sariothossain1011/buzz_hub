@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ProductCard from '../products/ProductCard';
 import { IProduct } from '@/types';
 import { instance } from '@/axios/axiosInstance';
+import Loader from '../common/Loader';
 
 
 
@@ -22,6 +23,10 @@ const FeaturesProducts = () => {
         };
         fetchProducts();
     }, []);
+
+    if(!products){
+        return   <Loader/>
+    }
 
     return (
         <div className=' pb-5'>
