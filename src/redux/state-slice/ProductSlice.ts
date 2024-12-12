@@ -1,9 +1,6 @@
-// store/productsSlice.ts
 import { instance } from '@/axios/axiosInstance';
 import { IProduct } from '@/types';
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-
-
 
 interface ProductsState {
   products: IProduct[];
@@ -17,7 +14,6 @@ const initialState: ProductsState = {
   error: null,
 };
 
-// Async thunk for fetching products
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (query: { category?: string; brand?: string; keyword?: string }) => {

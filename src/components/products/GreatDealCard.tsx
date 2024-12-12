@@ -18,7 +18,7 @@ const GreatDealCard: React.FC<ProductsProps> = ({ product }) => {
         brand: product.brand,
         category: product.category,
         price: product.price,
-        discountPrice:product.discountPrice,
+        discountPrice: product.discountPrice,
         productCode: product.productCode,
         quantity: product.quantity,
         model: product.model,
@@ -32,7 +32,7 @@ const GreatDealCard: React.FC<ProductsProps> = ({ product }) => {
         features: product.features,
         reference: product.reference,
         isFeatured: product.isFeatured,
-        
+
     })
     useEffect(() => {
         setProductItem((prevProductItem) => ({
@@ -40,7 +40,7 @@ const GreatDealCard: React.FC<ProductsProps> = ({ product }) => {
             id: product.id,
             name: product.name,
             price: product.price,
-            quantity:1,
+            quantity: 1,
         }));
     }, [
         product.id,
@@ -56,13 +56,13 @@ const GreatDealCard: React.FC<ProductsProps> = ({ product }) => {
 
     return (
         <>
-            <div  className=' flex flex-col justify-center items-center text-center gap-2 p-3 border rounded-sm group'>
+            <div className=' flex flex-col justify-center items-center text-center gap-2 p-3 border rounded-sm group'>
                 <div className=' relative'>
                     <div className=" relative w-full min-h-[250px] md:min-h-[220px]  overflow-hidden">
                         <Image src={product.image} alt={product.name} className='w-full h-full relative group-hover:scale-105 duration-500 rounded-md ' width={200} height={200} />
 
                     </div>
-               </div>
+                </div>
                 <h2 className='text-sm font-semibold'>{product.name}</h2>
                 <p className=' text-blue-500'>   <span className="line-through">৳{product.price}</span>  {<span>৳{product.discountPrice}</span>}  </p>
                 <div className=' min-w-full flex flex-row gap-4  justify-between items-center text-md font-semibold '>

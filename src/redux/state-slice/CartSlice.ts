@@ -115,7 +115,7 @@ export const cartSlice = createSlice({
       state.cartItems = [];
       state.cartCount = 0;
       state.comment = "";
-      saveCartToLocalStorage(state); // Optionally save the cleared cart state to localStorage
+      saveCartToLocalStorage(state); 
     },
   },
 });

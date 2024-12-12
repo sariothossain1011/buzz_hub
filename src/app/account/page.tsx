@@ -7,8 +7,8 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { instance } from "@/axios/axiosInstance";
 import { SuccessToast } from "@/components/helper/validation";
-import LoadingSpinner from "@/components/common/LoadingSpinner";
 import { IUser } from "@/types";
+import Loader from "@/components/common/Loader";
 
 
 
@@ -40,7 +40,7 @@ const AccountPage: React.FC = () => {
     }, []);
 
     if (!user) {
-        return <LoadingSpinner />
+        return <Loader />
     }
 
     return (

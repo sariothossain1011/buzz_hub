@@ -40,8 +40,6 @@ const Icons: IconItem[] = [
 ];
 
 const Footer = () => {
-
-
   return (
     <div className=' pt-10 bg-blue text-[#C0C0C0] '>
       <div className='container '>
@@ -82,17 +80,6 @@ const Footer = () => {
                 </div>
               ))
             }
-            {/* <div >
-              <h1 className=' text-lg font-semibold text-[#f0c76e] italic'>CUSTOMER SERVICES</h1>
-
-              <ul >
-                <li className=' text-sm font-medium py-2 text-white hover:text-[#f0c76e]'><Link href='/about-us'>Abouts Us</Link></li>
-                <li className=' text-sm font-medium py-2 text-white hover:text-[#f0c76e]'><Link href='/terms-and-condition'>Terms & conditions</Link></li>
-                <li className=' text-sm font-medium py-2 text-white hover:text-[#f0c76e]'><Link href='/return-and-refund-policy'>Return And Refound Policy </Link></li>
-                <li className=' text-sm font-medium py-2 text-white hover:text-[#f0c76e]'><Link href='/contact-us'>Contact Us</Link></li>
-              </ul>
-
-            </div> */}
 
             <div className=' flex flex-col gap-3 text-[14px] font-normal'>
               <h1 className=' text-xl font-semibold italic  text-black'>STORE INFORMATION</h1>

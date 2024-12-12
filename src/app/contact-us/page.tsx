@@ -18,7 +18,6 @@ import { ErrorToast, SuccessToast } from "@/components/helper/validation";
 const ContactUsPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  // const [success, setSuccess] = useState<string | null>(null);
 
   const submitHandler = async (data: any) => {
     setLoading(true);

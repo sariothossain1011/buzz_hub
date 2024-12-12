@@ -1,8 +1,8 @@
 import * as React from "react";
 
 interface LoadingSpinnerProps {
-  size?: number; // Optional size prop
-  stroke?: string; // Optional stroke prop
+  size?: number; 
+  stroke?: string; 
 }
 
 const LoadingSpinner: React.FC<
@@ -15,7 +15,7 @@ const LoadingSpinner: React.FC<
         width={size}
         height={size}
         stroke={stroke}
-        viewBox="0 0 24 24" // Keeps proportions for any size
+        viewBox="0 0 24 24" 
         {...props}
       >
         <style>

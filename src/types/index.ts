@@ -11,24 +11,11 @@ export interface MenuItem {
   link: string;
 }
 
-// PRODUCTS TYPE
-
-// Interface for individual description objects
 export interface Description {
   id: number;
   title: string;
   pera: string;
 }
-
-// Interface for individual review objects
-export interface Review {
-  id: number;
-  rating: number;
-  comment: string;
-}
-
-
-
 
 export interface IUser {
   fName: string;
@@ -38,7 +25,6 @@ export interface IUser {
 }
 
 export interface IAddToCart {
-
   id:string,
   image: string;
   name: string;
@@ -48,8 +34,6 @@ export interface IAddToCart {
   discountPrice: number;
   productCode: string;
   quantity: number;
-
-  // Key features
   model?: string;
   processor?: string;
   ram?: string;
@@ -68,10 +52,6 @@ export interface IStoreItem extends IAddToCart {
   date: string;
 }
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-
 export interface IProduct {
   id:string,
   image: string;
@@ -82,8 +62,6 @@ export interface IProduct {
   discountPrice: number;
   productCode: string;
   quantity: number;
-
-  // Key features
   model?: string;
   processor?: string;
   ram?: string;

@@ -38,47 +38,20 @@ const Header = () => {
   return (
     <>
       <header className='bg-blue text-white '>
-        {/* <div className=' hidden sm:block'>
-          <nav className='flex flex-col items-center py-2'>
-            <ul className=' flex flex-row gap-5'>
-              <li className='px-2 text-white md:hover:text-black'><Link href='/gread_deal'>Great Deal</Link></li>
-              <li className='px-2 text-white md:hover:text-black'><Link href='/our_brands'>Our Brands</Link></li>
-              <li className='px-2 text-white md:hover:text-black'><Link href='/help_and_support'>Help & Support</Link></li>
-              {token ? (
-                <>
-                  <li className='px-2 text-white md:hover:text-black'><Link href='/account'>Account</Link></li>
-                  <li className='px-2 text-white md:hover:text-black'><Link href='' onClick={() => Cookies.remove("accessKey")}>Logout</Link></li>
-                </>
-
-              ) : (
-                <>
-                  <li className='px-2 text-white md:hover:text-black'><Link href='/login'>Login</Link></li>
-                  <li className='px-2 text-white md:hover:text-black'><Link href='/signup'>SignUp</Link></li>
-                </>
-              )}
-
-
-
-            </ul>
-          </nav>
-        </div> */}
         <div className='relative  container flex flex-row justify-between items-center py-3'>
           <div className='relative flex flex-row items-center gap-3'>
             <FaBars size={24} onClick={() => setIsOpenHeader(!isOpenHeader)} className="cursor-pointer block sm:hidden " />
 
             <Link href='/' className=' text-black text-xl md:text-3xl font-extrabold italic w-[45px] h-[45px]'>
-            <Image
-          src="/images/buzz_logo.png"
-          alt="Page Not Found"
-          layout="responsive"
-          width={100}
-          height={100}
-          className="h-full w-full object-cover"
-        />
+              <Image
+                src="/images/buzz_logo.png"
+                alt="Page Not Found"
+                layout="responsive"
+                width={100}
+                height={100}
+                className="h-full w-full object-cover"
+              />
             </Link>
-
-
-
             {isOpenHeader && (
               <nav className='absolute top-[58px] left-0 z-40 bg-white shadow-lg min-w-64 rounded-sm'>
                 <ul className='space-y-3 pt-2'>
@@ -97,7 +70,7 @@ const Header = () => {
           {
             isOpenSearch && (
               <div className=" absolute z-20 top-[55px] md:top-[68px] right-2 md:right-24 lg:right-28">
-                <SearchForm/>
+                <SearchForm />
               </div>
             )
           }
@@ -127,27 +100,20 @@ const Header = () => {
                 </span>
               )}
             </Link>
-            {
-              token ? (
-                <Link href="/account">
-                  <FaUserLarge size={22} className=' text-white' />
-                </Link>
-              ) : (
-                <Link href="/login">
-                  <FaUserLarge size={22} className=' text-white' />
-                </Link>
-              )
-            }
+
+            <Link href={`${token ? "/account" : "/login"}`}>
+              <FaUserLarge size={22} className=' text-white' />
+            </Link>
 
 
           </div>
-        
+
         </div>
 
         {isOpenHeader && (
           <div className='fixed inset-0 bg-black/40 z-10' onClick={() => setIsOpenHeader(false)} />
         )}
-                {isOpenSearch && (
+        {isOpenSearch && (
           <div className='fixed inset-0  z-10' onClick={() => setIsOpenSearch(false)} />
         )}
       </header>

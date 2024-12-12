@@ -1,14 +1,9 @@
 "use client";
 import React, { useRef } from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import b1 from "../../../public/images/b1.jpg";
-import b2 from "../../../public/images/b2.jpg";
-// import required modules
 import { Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import MotionTransition from "../motion/MotionTransition";

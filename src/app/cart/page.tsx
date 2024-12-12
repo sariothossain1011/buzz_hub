@@ -15,7 +15,7 @@ const CartPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [comment, setComment] = useState<string>("");
-  const [isMounted, setIsMounted] = useState(false); 
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -59,15 +59,12 @@ const CartPage = () => {
     (acc, item) => acc + item.price * item.quantity,
     0
   );
-  if (!isMounted) {
-    return <div>Loading...</div>;
-  }
 
-  if (cartItems.length == 0) {
-    return <div className=' text-center py-20'>
-      <h1>Empty Cart Value</h1>
-    </div>
-  }
+
+  if (!isMounted) return <div>Loading...</div>;
+
+  if (cartItems.length == 0) return <p className=' flex justify-center items-center h-screen text-xl md:text-4xl font-semibold'>Empty Cart Value</p>
+
 
   return (
     <div className=' flex flex-col'>
@@ -105,7 +102,7 @@ const CartPage = () => {
                       </div>
 
                       <Image
-                        src={`${item?.image }`}
+                        src={`${item?.image}`}
                         alt={item.name}
                         width={100}
                         height={100}
@@ -155,7 +152,7 @@ const CartPage = () => {
               href="/products"
               className=' w-full'
             >
-              <Button name='CONTINUE SHOPPING'  />
+              <Button name='CONTINUE SHOPPING' />
             </Link>
           </div>
         </div>

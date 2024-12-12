@@ -55,7 +55,6 @@ const SignupForm = () => {
             <FormInput name='email' id='email' placeholder='ENTER YOUR EMAIL' type='email' className='min-w-full border hover:border-black rounded-sm px-4 py-3 text-sm' />
             <FormInput name='password' id='password' placeholder='PASSWORD' type="password" className='  min-w-full border hover:border-black rounded-sm px-4 py-3 text-sm' />
             <p className=' text-sm font-normal'>If you don&apos;t have an account, please<Link href="/login" className='text-sm font-semibold text-blue underline'> Login Here</Link></p>
-            {/* <Button name="SIGNUP" className=' rounded-sm'/> */}
             <button className='w-full bg-blue hover:bg-black text-white text-sm font-semibold shadow-sm py-3 rounded-sm duration-300 ease-in'>
                 {loading ? <LoadingSpinner /> : "SIGNUP"}
             </button>

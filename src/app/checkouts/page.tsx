@@ -15,6 +15,7 @@ import LoadingSpinner from "@/components/common/LoadingSpinner";
 import Cookies from "js-cookie";
 import { clearCart } from "@/redux/state-slice/CartSlice";
 import { SuccessToast } from "@/components/helper/validation";
+import Loader from "@/components/common/Loader";
 
 
 const CheckoutPage = () => {
@@ -25,10 +26,11 @@ const CheckoutPage = () => {
   const dispatch = useDispatch();
   const [selectedDeliveryLocation, setSelectedDeliveryLocation] = useState<string>("insite-dhaka");
 
-  // const [selectedPayment, setSelectedPayment] = useState({
-  //   title: "",
-  //   value: "",
-  // });
+  const { cartCount } = useSelector((state: RootState) => ({
+    cartCount: state.cart.cartCount,
+  })) as {
+    cartCount: number;
+  };
 
 
 
@@ -47,9 +49,11 @@ const CheckoutPage = () => {
   };
   const submitHandler = async (data: any) => {
     console.log(data);
+    setLoading(true)
     dispatch(clearCart());
     SuccessToast("Orders Confirm!")
     router.push("/confirmation")
+    setLoading(false)
   };
 
   const subtotal = cartItems.reduce(
@@ -62,7 +66,9 @@ const CheckoutPage = () => {
 
 
 
-
+  if (loading) return <Loader />
+  
+  if (!cartCount) return  <p className=' flex justify-center items-center h-screen text-xl md:text-4xl font-semibold'>Empty Cart Value</p>
   return (
     <div className=" py-10">
       <div className="text-center py-10 md:py-40">

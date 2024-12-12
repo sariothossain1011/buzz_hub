@@ -1,9 +1,7 @@
 "use client"
 import Cookies from "js-cookie";
-import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
-import { MdEmail } from "react-icons/md";
 import FormInput from './FormInput';
 import Form from './Form';
 import { instance } from '@/axios/axiosInstance';

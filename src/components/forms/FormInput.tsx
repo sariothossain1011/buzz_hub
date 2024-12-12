@@ -1,6 +1,3 @@
-
-
-
 "use client";
 import { getErrorMessageByPropertyName } from "@/utils/schema-validation";
 import { useState } from "react";
@@ -58,7 +55,7 @@ const FormInput = ({
         name={name}
         render={({ field }) => {
           const fieldValue =
-            value !== undefined ? value : field.value || defaultValue || ""; // Use defaultValue if provided
+            value !== undefined ? value : field.value || defaultValue || ""; 
 
           return type === "password" ? (
             <span className="relative">
@@ -67,8 +64,8 @@ const FormInput = ({
                 type={isPasswordShow ? "text" : "password"}
                 placeholder={placeholder}
                 {...field}
-                value={fieldValue} // Controlled value
-                onChange={onChange || field.onChange} // Ensure `onChange` handler is provided
+                value={fieldValue} 
+                onChange={onChange || field.onChange} 
                 required={required}
                 disabled={disabled}
                 className={`${className} py-2 pr-8 w-full`}
@@ -95,8 +92,8 @@ const FormInput = ({
               type={type}
               placeholder={placeholder}
               {...field}
-              value={fieldValue} // Controlled value
-              onChange={onChange || field.onChange} // Ensure `onChange` handler is provided
+              value={fieldValue} 
+              onChange={onChange || field.onChange} 
               required={required}
               disabled={disabled}
               className={`${className} py-2 w-full`}
