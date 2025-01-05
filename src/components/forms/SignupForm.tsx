@@ -36,7 +36,7 @@ const SignupForm = () => {
                         response?.data?.token
                     );
                 SuccessToast("Registration Successfully")
-                router.push("/");
+                router.push("/account");
             }
         } catch (error) {
             ErrorToast(`Something went wrong. Please try again.`);
