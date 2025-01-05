@@ -9,8 +9,10 @@ import Loader from '../common/Loader';
 
 const FeaturesProducts = () => {
     const [products, setProducts] = useState<IProduct[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     useEffect(() => {
         const fetchProducts = async () => {
+            setIsLoading(true);
             try {
                 const response = await instance.get('Product/All');
                 if (response?.data?.message) {
@@ -19,13 +21,15 @@ const FeaturesProducts = () => {
             } catch (error) {
                 console.error("Failed to fetch Products", error);
                 setProducts([]);
+            } finally {
+                setIsLoading(false);
             }
         };
         fetchProducts();
     }, []);
 
-    if(!products){
-        return   <Loader/>
+    if (!products || isLoading) {
+        return <Loader />
     }
 
     return (
