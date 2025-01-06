@@ -176,7 +176,7 @@ const CartPage = () => {
             </span>
             <div className="flex flex-row justify-between items-center bg-slate-100 px-6 py-4">
               <span className="text-lg font-semibold">Total:</span>
-              <span className="text-xl font-bold">€{total.toFixed(2)}</span>
+              <span className="text-xl font-bold">৳{total.toFixed(2)}</span>
             </div>
           </div>
 
